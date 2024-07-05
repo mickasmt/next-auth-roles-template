@@ -56,10 +56,6 @@ export const docsConfig: DocsConfig = {
           title: "Markdown files",
           href: "/docs/configuration/markdown-files",
         },
-        {
-          title: "Subscriptions",
-          href: "/docs/configuration/subscriptions",
-        },
       ],
     },
   ],

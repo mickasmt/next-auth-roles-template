@@ -7,61 +7,60 @@ import { Icons } from "@/components/shared/icons";
 
 export default async function HeroLanding() {
   return (
-    <section className="space-y-6 py-12 sm:py-20 lg:py-20">
-      <div className="container flex max-w-5xl flex-col items-center gap-5 text-center">
+    <section className="space-y-6 py-12 sm:py-20 lg:py-24">
+      <div className="container flex max-w-screen-md flex-col items-center gap-5 text-center">
         <Link
-          href="https://twitter.com/miickasmt/status/1719892161095745801"
+          href="https://next-saas-stripe-starter.vercel.app/"
           className={cn(
-            buttonVariants({ variant: "outline", size: "sm", rounded: "full" }),
+            buttonVariants({ variant: "outline", size: "sm", rounded: "xl" }),
             "px-4",
           )}
           target="_blank"
         >
-          <span className="mr-3">🎉</span> Introducing on{" "}
-          <Icons.twitter className="ml-2 size-3.5" />
+          <span className="mr-3">🎉</span> Free Next SaaS Starter Here!
         </Link>
 
-        <h1 className="text-balance font-urban text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-[66px]">
-          Kick off with a bang with{" "}
-          <span className="text-gradient_indigo-purple font-extrabold">
-            SaaS Starter
+        <h1 className="font-satoshi text-balance text-[40px] font-black leading-[1.15] tracking-tight sm:text-5xl md:text-6xl md:leading-[1.15]">
+          Next.js Template with{" "}
+          <span className="bg-gradient-to-r from-violet-600 via-blue-600 to-cyan-500 bg-clip-text text-transparent">
+            Auth & User Roles!
           </span>
         </h1>
 
         <p
-          className="max-w-2xl text-balance leading-normal text-muted-foreground sm:text-xl sm:leading-8"
+          className="max-w-2xl text-balance text-muted-foreground sm:text-lg"
           style={{ animationDelay: "0.35s", animationFillMode: "forwards" }}
         >
-          Build your next project using Next.js 14, Prisma, Neon, Auth.js v5,
-          Resend, React Email, Shadcn/ui, Stripe.
+          Minimalist. Sturdy. <b>Open Source</b>. <br /> Focus on your own idea
+          and... Nothing else!
         </p>
 
         <div
-          className="flex justify-center space-x-2 md:space-x-4"
+          className="flex justify-center space-x-2"
           style={{ animationDelay: "0.4s", animationFillMode: "forwards" }}
         >
           <Link
-            href="/pricing"
+            href="/docs"
             prefetch={true}
             className={cn(
-              buttonVariants({ size: "lg", rounded: "full" }),
-              "gap-2",
+              buttonVariants({ rounded: "xl", size: "lg" }),
+              "gap-2 px-5 text-[15px]",
             )}
           >
-            <span>Go Pricing</span>
+            <span>Installation Guide</span>
             <Icons.arrowRight className="size-4" />
           </Link>
           <Link
-            href={siteConfig.links.github}
+            href="https://github.com/mickasmt/next-auth-roles-template"
             target="_blank"
             rel="noreferrer"
             className={cn(
               buttonVariants({
                 variant: "outline",
+                rounded: "xl",
                 size: "lg",
-                rounded: "full",
               }),
-              "px-5",
+              "px-4 text-[15px]",
             )}
           >
             <Icons.gitHub className="mr-2 size-4" />

@@ -73,18 +73,7 @@ export function UserAccountNav({ user }: { user: ExtendedUser }) {
                     <p className="text-sm">Admin</p>
                   </Link>
                 </li>
-              ) : (
-                <li className="rounded-lg text-foreground hover:bg-muted">
-                  <Link
-                    href="/dashboard/billing"
-                    onClick={closeDrawer}
-                    className="flex w-full items-center gap-3 px-2.5 py-2"
-                  >
-                    <CreditCard className="size-4" />
-                    <p className="text-sm">Billing</p>
-                  </Link>
-                </li>
-              )}
+              ) : null}
 
               <li className="rounded-lg text-foreground hover:bg-muted">
                 <Link
@@ -158,17 +147,7 @@ export function UserAccountNav({ user }: { user: ExtendedUser }) {
               <p className="text-sm">Admin</p>
             </Link>
           </DropdownMenuItem>
-        ) : (
-          <DropdownMenuItem asChild>
-            <Link
-              href="/dashboard/billing"
-              className="flex items-center space-x-2.5"
-            >
-              <CreditCard className="size-4" />
-              <p className="text-sm">Billing</p>
-            </Link>
-          </DropdownMenuItem>
-        )}
+        ) : null}
 
         <DropdownMenuItem asChild>
           <Link href="/dashboard" className="flex items-center space-x-2.5">

@@ -16,7 +16,7 @@ export default function NotFound() {
         Page not found. Back to{" "}
         <Link
           href="/"
-          className="text-muted-foreground underline underline-offset-4 hover:text-purple-500"
+          className="text-muted-foreground underline underline-offset-4 hover:text-blue-500"
         >
           Homepage
         </Link>

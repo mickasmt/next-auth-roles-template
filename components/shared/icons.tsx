@@ -6,9 +6,9 @@ import {
   ChevronLeft,
   ChevronRight,
   Copy,
-  CreditCard,
   File,
   FileText,
+  Flame,
   HelpCircle,
   Image,
   Laptop,
@@ -18,13 +18,12 @@ import {
   Moon,
   MoreVertical,
   Plus,
-  Puzzle,
   Search,
   Settings,
   SunMedium,
   Trash,
   User,
-  X,
+  X
 } from "lucide-react";
 
 export type Icon = LucideIcon;
@@ -33,7 +32,6 @@ export const Icons = {
   add: Plus,
   arrowRight: ArrowRight,
   arrowUpRight: ArrowUpRight,
-  billing: CreditCard,
   chevronLeft: ChevronLeft,
   chevronRight: ChevronRight,
   check: Check,
@@ -76,7 +74,7 @@ export const Icons = {
   ),
   help: HelpCircle,
   laptop: Laptop,
-  logo: Puzzle,
+  logo: Flame,
   media: Image,
   moon: Moon,
   page: File,

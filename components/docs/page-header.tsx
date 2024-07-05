@@ -18,7 +18,7 @@ export function DocsPageHeader({
       <div className="mb-4 flex items-center space-x-1 text-sm text-muted-foreground">
         <div className="truncate">Docs</div>
         <Icons.chevronRight className="size-4" />
-        <div className="font-medium text-purple-600/95 dark:text-purple-400">
+        <div className="font-medium text-blue-600 dark:text-blue-400">
           {heading}
         </div>
       </div>

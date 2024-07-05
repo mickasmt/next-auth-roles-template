@@ -62,9 +62,8 @@ const config = {
       },
       fontFamily: {
         sans: ["var(--font-sans)", ...fontFamily.sans],
-        urban: ["var(--font-urban)", ...fontFamily.sans],
         heading: ["var(--font-heading)", ...fontFamily.sans],
-        geist: ["var(--font-geist)", ...fontFamily.sans],
+        satoshi: ["var(--font-satoshi)", ...fontFamily.sans],
       },
       keyframes: {
         "accordion-down": {

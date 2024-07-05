@@ -55,9 +55,9 @@ export function NavBar({ scroll = false }: NavBarProps) {
         large={documentation}
       >
         <div className="flex gap-6 md:gap-10">
-          <Link href="/" className="flex items-center space-x-2">
+          <Link href="/" className="flex items-center space-x-1.5">
             <Icons.logo />
-            <span className="font-urban text-xl font-bold">
+            <span className="font-satoshi text-xl font-bold">
               {siteConfig.name}
             </span>
           </Link>
@@ -134,7 +134,7 @@ export function NavBar({ scroll = false }: NavBarProps) {
                     className="gap-2 px-4"
                     variant="default"
                     size="sm"
-                    rounded="full"
+                    rounded="xl"
                   >
                     <span>Dashboard</span>
                   </Button>
@@ -146,7 +146,7 @@ export function NavBar({ scroll = false }: NavBarProps) {
               className="hidden gap-2 px-4 md:flex"
               variant="default"
               size="sm"
-              rounded="full"
+              rounded="lg"
               onClick={() => setShowSignInModal(true)}
             >
               <span>Sign In</span>
@@ -155,7 +155,7 @@ export function NavBar({ scroll = false }: NavBarProps) {
           ) : (
             <div className="hidden lg:flex">
               {dashBoard || admin ? (
-                <Skeleton className="size-9 rounded-full" />
+                <Skeleton className="size-9 rounded-xl" />
               ) : (
                 <Skeleton className="h-9 w-24 rounded-full" />
               )}

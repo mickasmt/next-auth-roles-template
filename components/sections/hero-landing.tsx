@@ -20,7 +20,7 @@ export default async function HeroLanding() {
           <span className="mr-3">🎉</span> Free Next SaaS Starter Here!
         </Link>
 
-        <h1 className="font-satoshi text-balance text-[40px] font-black leading-[1.15] tracking-tight sm:text-5xl md:text-6xl md:leading-[1.15]">
+        <h1 className="text-balance font-satoshi text-[40px] font-black leading-[1.15] tracking-tight sm:text-5xl md:text-6xl md:leading-[1.15]">
           Next.js Template with{" "}
           <span className="bg-gradient-to-r from-violet-600 via-blue-600 to-cyan-500 bg-clip-text text-transparent">
             Auth & User Roles!

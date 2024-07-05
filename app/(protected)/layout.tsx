@@ -1,13 +1,12 @@
 import { redirect } from "next/navigation";
 
+import { adminConfig } from "@/config/admin";
 import { dashboardConfig } from "@/config/dashboard";
 import { getCurrentUser } from "@/lib/session";
 import { DashboardNav } from "@/components/layout/dashboard-sidenav";
 import { NavBar } from "@/components/layout/navbar";
 import { SiteFooter } from "@/components/layout/site-footer";
 import MaxWidthWrapper from "@/components/shared/max-width-wrapper";
-
-import { adminConfig } from "../../config/admin";
 
 interface ProtectedLayoutProps {
   children?: React.ReactNode;

@@ -14,7 +14,8 @@
     "lint": "next lint",
     "preview": "next build && next start",
     "postinstall": "prisma generate",
-    "email": "email dev --dir emails --port 3333"
+    "email": "email dev --dir emails --port 3333",
+    "remove-content": "node ./setup.mjs"
   },
   "dependencies": {
     "@auth/prisma-adapter": "^2.4.1",
@@ -62,6 +63,7 @@
     "contentlayer2": "^0.4.6",
     "date-fns": "^3.6.0",
     "lucide-react": "^0.381.0",
+    "minimist": "^1.2.8",
     "ms": "^2.1.3",
     "next": "14.2.4",
     "next-auth": "5.0.0-beta.18",

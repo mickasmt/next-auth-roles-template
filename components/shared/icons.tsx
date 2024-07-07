@@ -11,6 +11,7 @@ import {
   FileText,
   Flame,
   HelpCircle,
+  Home,
   Image,
   Laptop,
   LayoutPanelLeft,
@@ -80,6 +81,7 @@ export const Icons = {
     </svg>
   ),
   help: HelpCircle,
+  home: Home,
   laptop: Laptop,
   lineChart: LineChart,
   logo: Flame,

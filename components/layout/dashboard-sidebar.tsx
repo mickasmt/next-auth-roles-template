@@ -4,8 +4,9 @@ import { Fragment, useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { SidebarDashboardType } from "@/types";
-import { Menu, Package2, PanelLeftClose, PanelRightClose } from "lucide-react";
+import { Menu, PanelLeftClose, PanelRightClose } from "lucide-react";
 
+import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 import { useMediaQuery } from "@/hooks/use-media-query";
 import { Badge } from "@/components/ui/badge";
@@ -112,7 +113,7 @@ export function DashboardSidebar({ links }: DashboardSidebarProps) {
                         {section.sectionName}
                       </p>
                     ) : (
-                      <div className="h-[18px]" />
+                      <div className="h-4" />
                     )}
                     {section.links.map((item) => {
                       const Icon = Icons[item.icon || "arrowRight"];
@@ -222,15 +223,20 @@ export function MobileSheetSidebar({ links }: DashboardSidebarProps) {
               href="#"
               className="flex items-center gap-2 text-lg font-semibold"
             >
-              <Package2 className="size-6" />
-              <span className="sr-only">Acme Inc</span>
+              <Icons.logo className="size-6" />
+              <span className="font-satoshi text-lg font-bold">
+                {siteConfig.name}
+              </span>
             </Link>
 
             <ProjectSwitcher large />
 
             {links.map((section) => (
-              <section key={section.sectionName}>
-                <p className="mb-0.5 text-xs text-muted-foreground">
+              <section
+                key={section.sectionName}
+                className="flex flex-col gap-0.5"
+              >
+                <p className="text-xs text-muted-foreground">
                   {section.sectionName}
                 </p>
 

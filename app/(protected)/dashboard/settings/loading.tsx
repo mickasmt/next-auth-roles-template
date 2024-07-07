@@ -1,10 +1,9 @@
 import { DashboardHeader } from "@/components/dashboard/header";
-import { DashboardShell } from "@/components/dashboard/shell";
 import { CardSkeleton } from "@/components/shared/card-skeleton";
 
 export default function DashboardSettingsLoading() {
   return (
-    <DashboardShell>
+    <>
       <DashboardHeader
         heading="Settings"
         text="Manage account and website settings."
@@ -14,6 +13,6 @@ export default function DashboardSettingsLoading() {
         <CardSkeleton />
         <CardSkeleton />
       </div>
-    </DashboardShell>
+    </>
   );
 }

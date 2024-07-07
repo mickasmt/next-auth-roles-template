@@ -1,10 +1,10 @@
 import { Skeleton } from "@/components/ui/skeleton";
 import { DashboardHeader } from "@/components/dashboard/header";
 
-export default function DashboardLoading() {
+export default function ChartsLoading() {
   return (
     <>
-      <DashboardHeader heading="Dashboard" text="Current Role :" />
+      <DashboardHeader heading="Charts" />
       <Skeleton className="size-full rounded-lg" />
     </>
   );

@@ -22,16 +22,9 @@ export const sidebarLinks: SidebarDashboardType = [
         authorizeOnly: UserRole.ADMIN,
       },
       {
-        href: "#",
-        icon: "post",
-        label: "Posts",
-        badge: 6,
-        authorizeOnly: UserRole.ADMIN,
-      },
-      {
-        href: "/users",
-        icon: "user",
-        label: "User Only",
+        href: "/dashboard/posts",
+        icon: 'post',
+        label: "User Posts",
         authorizeOnly: UserRole.USER,
       },
     ],
@@ -40,6 +33,7 @@ export const sidebarLinks: SidebarDashboardType = [
     sectionName: "OPTIONS",
     links: [
       { href: "/dashboard/settings", icon: "settings", label: "Settings" },
+      { href: "/", icon: "home", label: "Homepage" },
       { href: "/docs", icon: "bookOpen", label: "Documentation" },
       {
         href: "#",

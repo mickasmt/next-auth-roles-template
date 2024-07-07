@@ -22,10 +22,12 @@ export const sidebarLinks: SidebarDashboardType = [
         authorizeOnly: UserRole.ADMIN,
       },
       {
-        href: "/dashboard/posts",
-        icon: 'post',
+        // href: "#/dashboard/posts",
+        href: "#",
+        icon: "post",
         label: "User Posts",
         authorizeOnly: UserRole.USER,
+        disabled: true
       },
     ],
   },

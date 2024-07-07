@@ -123,14 +123,14 @@ export function DashboardSidebar({ links }: DashboardSidebarProps) {
                             {isSidebarExpanded ? (
                               <Link
                                 key={`link-${item.label}`}
-                                href={item.disabled ? "/" : item.href}
+                                href={item.disabled ? "#" : item.href}
                                 className={cn(
-                                  "flex items-center gap-3 rounded-md p-2 text-sm font-medium hover:bg-muted hover:text-accent-foreground",
+                                  "flex items-center gap-3 rounded-md p-2 text-sm font-medium hover:bg-muted",
                                   path === item.href
                                     ? "bg-muted"
-                                    : "text-muted-foreground",
+                                    : "text-muted-foreground hover:text-accent-foreground",
                                   item.disabled &&
-                                    "cursor-not-allowed opacity-80",
+                                    "cursor-not-allowed opacity-80 hover:bg-transparent hover:text-muted-foreground",
                                 )}
                               >
                                 <Icon className="size-5" />
@@ -146,14 +146,14 @@ export function DashboardSidebar({ links }: DashboardSidebarProps) {
                                 <TooltipTrigger asChild>
                                   <Link
                                     key={`link-tooltip-${item.label}`}
-                                    href={item.disabled ? "/" : item.href}
+                                    href={item.disabled ? "#" : item.href}
                                     className={cn(
-                                      "flex items-center gap-3 rounded-md py-2 text-sm font-medium hover:bg-muted hover:text-accent-foreground",
+                                      "flex items-center gap-3 rounded-md py-2 text-sm font-medium hover:bg-muted",
                                       path === item.href
                                         ? "bg-muted"
-                                        : "text-muted-foreground",
+                                        : "text-muted-foreground hover:text-accent-foreground",
                                       item.disabled &&
-                                        "cursor-not-allowed opacity-80",
+                                        "cursor-not-allowed opacity-80 hover:bg-transparent hover:text-muted-foreground",
                                     )}
                                   >
                                     <span className="flex size-full items-center justify-center">
@@ -247,13 +247,14 @@ export function MobileSheetSidebar({ links }: DashboardSidebarProps) {
                       <Fragment key={`link-fragment-${item.label}`}>
                         <Link
                           key={`link-${item.label}`}
-                          href={item.disabled ? "/" : item.href}
+                          href={item.disabled ? "#" : item.href}
                           className={cn(
-                            "flex items-center gap-3 rounded-md p-2 text-sm font-medium hover:bg-muted hover:text-accent-foreground",
+                            "flex items-center gap-3 rounded-md p-2 text-sm font-medium hover:bg-muted",
                             path === item.href
                               ? "bg-muted"
-                              : "text-muted-foreground",
-                            item.disabled && "cursor-not-allowed opacity-80",
+                              : "text-muted-foreground hover:text-accent-foreground",
+                            item.disabled &&
+                              "cursor-not-allowed opacity-80 hover:bg-transparent hover:text-muted-foreground",
                           )}
                         >
                           <Icon className="size-5" />

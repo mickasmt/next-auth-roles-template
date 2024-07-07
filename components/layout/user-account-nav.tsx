@@ -2,17 +2,10 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import {
-  CreditCard,
-  LayoutDashboard,
-  Lock,
-  LogOut,
-  Settings,
-} from "lucide-react";
-import { signOut } from "next-auth/react";
+import { LayoutDashboard, Lock, LogOut, Settings } from "lucide-react";
+import { signOut, useSession } from "next-auth/react";
 import { Drawer } from "vaul";
 
-import { ExtendedUser } from "@/types/next-auth";
 import { useMediaQuery } from "@/hooks/use-media-query";
 import {
   DropdownMenu,
@@ -23,13 +16,21 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { UserAvatar } from "@/components/shared/user-avatar";
 
-export function UserAccountNav({ user }: { user: ExtendedUser }) {
+export function UserAccountNav() {
+  const { data: session } = useSession();
+  const user = session?.user;
+
   const [open, setOpen] = useState(false);
   const closeDrawer = () => {
     setOpen(false);
   };
 
   const { isMobile } = useMediaQuery();
+
+  if (!user)
+    return (
+      <div className="size-8 animate-pulse rounded-full border bg-muted" />
+    );
 
   if (isMobile) {
     return (
@@ -124,7 +125,7 @@ export function UserAccountNav({ user }: { user: ExtendedUser }) {
       <DropdownMenuTrigger>
         <UserAvatar
           user={{ name: user.name || null, image: user.image || null }}
-          className="size-9 border"
+          className="size-8 border"
         />
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">

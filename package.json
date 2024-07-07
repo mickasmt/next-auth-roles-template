@@ -75,6 +75,7 @@
     "react-email": "2.1.4",
     "react-hook-form": "^7.52.0",
     "react-textarea-autosize": "^8.5.3",
+    "recharts": "^2.12.7",
     "resend": "^3.3.0",
     "sharp": "^0.33.4",
     "shiki": "^1.9.1",

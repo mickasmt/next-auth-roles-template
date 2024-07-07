@@ -1,4 +1,4 @@
-import { User } from "@prisma/client";
+import { User, UserRole } from "@prisma/client";
 import type { Icon } from "lucide-react";
 
 import { Icons } from "@/components/shared/icons";
@@ -48,11 +48,6 @@ export type MarketingConfig = {
   mainNav: MainNavItem[];
 };
 
-export type DashboardConfig = {
-  mainNav: MainNavItem[];
-  sidebarNav: SidebarNavItem[];
-};
-
 export type SubscriptionPlan = {
   title: string;
   description: string;
@@ -94,3 +89,20 @@ export type ColumnType = string | boolean | null;
 export type PlansRow = { feature: string; tooltip?: string } & {
   [key in (typeof plansColumns)[number]]: ColumnType;
 };
+
+// dashboard
+export type SidebarLinkType = {
+  href: string;
+  label: string;
+  icon: keyof typeof Icons;
+  badge?: number;
+  disabled?: boolean;
+  authorizeOnly?: UserRole;
+};
+
+export type SidebarSectionType = {
+  sectionName: string;
+  links: SidebarLinkType[];
+};
+
+export type SidebarDashboardType = SidebarSectionType[];

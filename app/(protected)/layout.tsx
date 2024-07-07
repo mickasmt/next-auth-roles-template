@@ -1,44 +1,55 @@
 import { redirect } from "next/navigation";
 
-import { adminConfig } from "@/config/admin";
-import { dashboardConfig } from "@/config/dashboard";
+import { sidebarLinks } from "@/config/dashboard";
 import { getCurrentUser } from "@/lib/session";
-import { DashboardNav } from "@/components/layout/dashboard-sidenav";
-import { NavBar } from "@/components/layout/navbar";
-import { SiteFooter } from "@/components/layout/site-footer";
+import { SearchCommand } from "@/components/dashboard/search-command";
+import {
+  DashboardSidebar,
+  MobileSheetSidebar,
+} from "@/components/layout/dashboard-sidebar";
+import { ModeToggle } from "@/components/layout/mode-toggle";
+import { UserAccountNav } from "@/components/layout/user-account-nav";
 import MaxWidthWrapper from "@/components/shared/max-width-wrapper";
 
 interface ProtectedLayoutProps {
-  children?: React.ReactNode;
+  children: React.ReactNode;
 }
 
-export default async function ProtectedLayout({
-  children,
-}: ProtectedLayoutProps) {
+export default async function Dashboard({ children }: ProtectedLayoutProps) {
   const user = await getCurrentUser();
 
   if (!user) redirect("/login");
 
+  const filteredLinks = sidebarLinks.map((section) => ({
+    ...section,
+    links: section.links.filter(
+      ({ authorizeOnly }) => !authorizeOnly || authorizeOnly === user.role,
+    ),
+  }));
+
   return (
-    <div className="flex min-h-screen flex-col space-y-6">
-      <NavBar />
-      <MaxWidthWrapper className="min-h-svh">
-        <div className="grid flex-1 gap-12 md:grid-cols-[200px_1fr]">
-          <aside className="hidden w-[200px] flex-col md:flex">
-            <DashboardNav
-              items={
-                user.role === "ADMIN"
-                  ? adminConfig.sidebarNav
-                  : dashboardConfig.sidebarNav
-              }
-            />
-          </aside>
-          <main className="flex w-full flex-1 flex-col overflow-hidden">
+    <MaxWidthWrapper className="max-w-[1650px] px-0">
+      <div className="relative flex min-h-screen w-full">
+        <DashboardSidebar links={filteredLinks} />
+
+        <div className="flex flex-1 flex-col">
+          <header className="sticky top-0 z-50 flex h-14 items-center gap-3 bg-background px-4 lg:h-[60px] xl:px-10">
+            <MobileSheetSidebar links={filteredLinks} />
+
+            <div className="w-full flex-1">
+              <SearchCommand links={filteredLinks} />
+            </div>
+
+            {/* <Notifications /> */}
+            <ModeToggle />
+            <UserAccountNav />
+          </header>
+
+          <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 xl:px-10">
             {children}
           </main>
         </div>
-      </MaxWidthWrapper>
-      <SiteFooter className="border-t" />
-    </div>
+      </div>
+    </MaxWidthWrapper>
   );
 }

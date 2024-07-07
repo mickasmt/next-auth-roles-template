@@ -18,13 +18,18 @@ export default async function AdminPage() {
 
   return (
     <DashboardShell>
-      <DashboardHeader heading="Admin" text="Access only for admin." />
+      <DashboardHeader
+        heading="Admin Panel"
+        text="Access only for users with ADMIN role."
+      />
       <div className="flex flex-col gap-5">
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <InfoCard />
           <InfoCard />
           <InfoCard />
           <InfoCard />
         </div>
+        <TransactionsList />
         <TransactionsList />
       </div>
     </DashboardShell>

@@ -52,34 +52,6 @@ export const Doc = defineDocumentType(() => ({
   computedFields,
 }));
 
-export const Guide = defineDocumentType(() => ({
-  name: "Guide",
-  filePathPattern: `guides/**/*.mdx`,
-  contentType: "mdx",
-  fields: {
-    title: {
-      type: "string",
-      required: true,
-    },
-    description: {
-      type: "string",
-    },
-    date: {
-      type: "date",
-      required: true,
-    },
-    published: {
-      type: "boolean",
-      default: true,
-    },
-    featured: {
-      type: "boolean",
-      default: false,
-    },
-  },
-  computedFields,
-}));
-
 export const Post = defineDocumentType(() => ({
   name: "Post",
   filePathPattern: `blog/**/*.mdx`,
@@ -131,12 +103,12 @@ export const Page = defineDocumentType(() => ({
 
 export default makeSource({
   contentDirPath: "./content",
-  documentTypes: [Page, Doc, Guide, Post],
+  documentTypes: [Page, Doc, Post],
   mdx: {},
 });
 ```
 
-This file configures Contentlayer to look for Markdown files in the specified directories (`content/blog`, `content/authors`, `content/docs`, `content/guides`, `content/pages`). It also defines the different document types you use in your project along with the fields associated with each document type.
+This file configures Contentlayer to look for Markdown files in the specified directories (`content/blog`, `content/authors`, `content/docs`, `content/pages`). It also defines the different document types you use in your project along with the fields associated with each document type.
 
 You can customize this file according to your project's needs by adding new document types or adjusting existing fields as per your specific requirements.
 
@@ -175,16 +147,6 @@ authors:
 ---
 title: Database
 description: How to config your Neon database.
----
-```
-
-### Guides
-
-```md
----
-title: Build a blog using ContentLayer and MDX.
-description: Learn how to use ContentLayer to build a blog with Next.js
-date: 2022-11-18
 ---
 ```
 

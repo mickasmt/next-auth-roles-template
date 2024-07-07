@@ -1,12 +1,12 @@
 import { allPosts } from "contentlayer/generated";
 import { compareDesc } from "date-fns";
 
-import { BlogPosts } from "@/components/content/blog-posts";
 import { constructMetadata } from "@/lib/utils";
+import { BlogPosts } from "@/components/content/blog-posts";
 
 export const metadata = constructMetadata({
-  title: "Blog – SaaS Starter",
-  description: "Latest news and updates from Next SaaS Starter.",
+  title: "Blog – Next Template",
+  description: "Latest news and updates from Next Auth Roles Template.",
 });
 
 export default async function BlogPage() {

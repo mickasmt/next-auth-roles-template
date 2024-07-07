@@ -1,5 +1,5 @@
 <a href="https://next-saas-stripe-starter.vercel.app">
-  <img alt="SaaS Starter" src="public/_static/og.jpg">
+  <img alt="Next Template" src="public/_static/og.jpg">
   <h1 align="center">Next Auth Roles Template</h1>
 </a>
 
@@ -57,13 +57,9 @@ pnpm run dev
 >
 > Use this command for update your project: `ncu -i --format group`
 
-## Roadmap
-- [ ] Upgrade eslint to v9
-- [ ] Add resend for success subscriptions
-
 ## Tech Stack + Features
 
-https://github.com/mickasmt/next-saas-stripe-starter/assets/62285783/828a4e0f-30e3-4cfe-96ff-4dfd9cd55124
+<img alt="Next Auth Roles Template" src="public/_static/images/x-preview.jpg">
 
 ### Frameworks
 

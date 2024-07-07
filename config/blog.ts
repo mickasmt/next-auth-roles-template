@@ -6,12 +6,12 @@ export const BLOG_CATEGORIES: {
   {
     title: "News",
     slug: "news",
-    description: "Updates and announcements from Next SaaS Starter.",
+    description: "Updates and announcements from Next Template.",
   },
   {
     title: "Education",
     slug: "education",
-    description: "Educational content about SaaS management.",
+    description: "Educational content about template management.",
   },
 ];
 

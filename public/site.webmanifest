@@ -1,6 +1,6 @@
 {
-  "name": "SaaS Starter",
-  "short_name": "SaaS Starter",
+  "name": "Next Auth Roles Template",
+  "short_name": "Next Template",
   "icons": [
     {
       "src": "./favicons/android-chrome-192x192.png",

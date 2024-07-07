@@ -27,7 +27,7 @@ export async function generateMetadata({
   const { title, description } = category;
 
   return constructMetadata({
-    title: `${title} Posts – Next SaaS Starter`,
+    title: `${title} Posts – Next Au`,
     description,
   });
 }

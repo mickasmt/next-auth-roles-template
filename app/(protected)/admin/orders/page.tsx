@@ -4,7 +4,7 @@ import { DashboardHeader } from "@/components/dashboard/header";
 import { EmptyPlaceholder } from "@/components/shared/empty-placeholder";
 
 export const metadata = constructMetadata({
-  title: "Orders – SaaS Starter",
+  title: "Orders – Next Template",
   description: "Check and manage your latest orders.",
 });
 

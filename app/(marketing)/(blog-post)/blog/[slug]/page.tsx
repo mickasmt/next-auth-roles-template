@@ -1,5 +1,5 @@
-import { allPosts } from "contentlayer/generated";
 import { notFound } from "next/navigation";
+import { allPosts } from "contentlayer/generated";
 
 import { Mdx } from "@/components/content/mdx-components";
 
@@ -9,13 +9,13 @@ import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
-import Author from "@/components/content/author";
-import MaxWidthWrapper from "@/components/shared/max-width-wrapper";
-import { DashboardTableOfContents } from "@/components/shared/toc";
-import { buttonVariants } from "@/components/ui/button";
 import { BLOG_CATEGORIES } from "@/config/blog";
 import { getTableOfContents } from "@/lib/toc";
 import { cn, constructMetadata, formatDate } from "@/lib/utils";
+import { buttonVariants } from "@/components/ui/button";
+import Author from "@/components/content/author";
+import MaxWidthWrapper from "@/components/shared/max-width-wrapper";
+import { DashboardTableOfContents } from "@/components/shared/toc";
 
 export async function generateStaticParams() {
   return allPosts.map((post) => ({
@@ -36,7 +36,7 @@ export async function generateMetadata({
   const { title, description, image } = post;
 
   return constructMetadata({
-    title: `${title} – SaaS Starter`,
+    title: `${title} – Next Template`,
     description: description,
     image,
   });

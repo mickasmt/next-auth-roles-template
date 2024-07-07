@@ -6,7 +6,7 @@ import { RadialTextChart } from "@/components/charts/radial-text-chart";
 import { DashboardHeader } from "@/components/dashboard/header";
 
 export const metadata = constructMetadata({
-  title: "Charts – SaaS Starter",
+  title: "Charts – Next Template",
   description: "List of charts by shadcn-ui",
 });
 

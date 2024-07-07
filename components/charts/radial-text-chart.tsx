@@ -36,10 +36,10 @@ const chartConfig = {
 export function RadialTextChart() {
   return (
     <Card className="flex flex-col">
-      <CardHeader className="items-center pb-0">
+      {/* <CardHeader className="items-center pb-0">
         <CardTitle>Radial Chart - Text</CardTitle>
         <CardDescription>January - June 2024</CardDescription>
-      </CardHeader>
+      </CardHeader> */}
       <CardContent className="flex-1 pb-0">
         <ChartContainer
           config={chartConfig}

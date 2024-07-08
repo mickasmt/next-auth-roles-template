@@ -27,18 +27,12 @@ export default async function HeroLanding() {
           </span>
         </h1>
 
-        <p
-          className="max-w-2xl text-balance text-muted-foreground sm:text-lg"
-          style={{ animationDelay: "0.35s", animationFillMode: "forwards" }}
-        >
+        <p className="max-w-2xl text-balance text-muted-foreground sm:text-lg">
           Minimalist. Sturdy. <b>Open Source</b>. <br /> Focus on your own idea
           and... Nothing else!
         </p>
 
-        <div
-          className="flex justify-center space-x-2"
-          style={{ animationDelay: "0.4s", animationFillMode: "forwards" }}
-        >
+        <div className="flex justify-center space-x-2">
           <Link
             href="/docs"
             prefetch={true}

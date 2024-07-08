@@ -24,12 +24,11 @@ const updateLinesInFile = async (
 
     await fs.writeFile(filePath, lines.join("\n"), "utf8");
 
+    const relativePath = path.basename(filePath);
     if (!endLine || startLine === endLine) {
-      console.log(`Updated line ${startLine} in file: ${filePath}`);
+      console.log(`${relativePath} : Updated line ${startLine}`);
     } else {
-      console.log(
-        `Updated lines ${startLine} to ${endLine} in file: ${filePath}`,
-      );
+      console.log(`${relativePath} : Updated lines ${startLine} to ${endLine}`);
     }
   } catch (err) {
     console.error(`Error updating file ${filePath}:`, err);
@@ -37,14 +36,14 @@ const updateLinesInFile = async (
 };
 
 // Function to delete specific lines from a file
-const deleteLinesFromFile = async (
-  filePath,
-  startLine,
-  endLine = startLine,
-) => {
+const deleteLinesFromFile = async (filePath, startLine, endLine) => {
   try {
     const data = await fs.readFile(filePath, "utf8");
     const lines = data.split("\n");
+
+    if (endLine === null || endLine === undefined) {
+      endLine = startLine;
+    }
 
     const filteredLines = lines.filter(
       (line, index) => index < startLine - 1 || index >= endLine,
@@ -52,12 +51,11 @@ const deleteLinesFromFile = async (
 
     await fs.writeFile(filePath, filteredLines.join("\n"), "utf8");
 
+    const relativePath = path.basename(filePath);
     if (startLine === endLine) {
-      console.log(`Removed line ${startLine} from file: ${filePath}`);
+      console.log(`${relativePath} : Removed line ${startLine}`);
     } else {
-      console.log(
-        `Removed lines ${startLine} to ${endLine} from file: ${filePath}`,
-      );
+      console.log(`${relativePath} : Removed lines ${startLine} to ${endLine}`);
     }
   } catch (err) {
     console.error(`Error modifying file ${filePath}:`, err);
@@ -86,6 +84,7 @@ const deleteFolderRecursive = async (path) => {
   const contentDir = path.join(process.cwd(), "content");
   const contentlayerPath = path.join(process.cwd(), "contentlayer.config.ts");
   const staticDir = path.join(process.cwd(), "public", "_static");
+  const typesDir = path.join(process.cwd(), "types");
 
   switch (mode) {
     case "blog":
@@ -137,8 +136,94 @@ const deleteFolderRecursive = async (path) => {
       console.log("");
 
       // manage lines
+      await updateLinesInFile(
+        path.join(componentsDir, "sections", "hero-landing.tsx"),
+        43,
+        null,
+        'href="/login"',
+      );
+      await updateLinesInFile(
+        path.join(componentsDir, "sections", "hero-landing.tsx"),
+        50,
+        null,
+        "<span>Go to Login Page</span>",
+      );
+      await updateLinesInFile(
+        contentlayerPath,
+        109,
+        null,
+        "documentTypes: [Page, Post],",
+      );
+      await deleteLinesFromFile(
+        path.join(componentsDir, "layout", "mobile-nav.tsx"),
+        124,
+        129,
+      );
+      await updateLinesInFile(
+        path.join(componentsDir, "layout", "mobile-nav.tsx"),
+        21,
+        29,
+        "const links = marketingConfig.mainNav;",
+      );
+      await updateLinesInFile(
+        path.join(componentsDir, "layout", "navbar.tsx"),
+        29,
+        null,
+        "const links = marketingConfig.mainNav;",
+      );
+
+      await deleteLinesFromFile(contentlayerPath, 23, 42);
+      await deleteLinesFromFile(path.join(configDir, "dashboard.ts"), 39, null);
+      await deleteLinesFromFile(path.join(configDir, "marketing.ts"), 9, 12);
+
+      await deleteLinesFromFile(
+        path.join(componentsDir, "layout", "mobile-nav.tsx"),
+        13,
+        null,
+      );
+      await deleteLinesFromFile(
+        path.join(componentsDir, "layout", "mobile-nav.tsx"),
+        9,
+        null,
+      );
+      await deleteLinesFromFile(
+        path.join(componentsDir, "layout", "mobile-nav.tsx"),
+        5,
+        null,
+      );
+      await deleteLinesFromFile(
+        path.join(componentsDir, "layout", "navbar.tsx"),
+        81,
+        102,
+      );
+      await deleteLinesFromFile(
+        path.join(componentsDir, "layout", "navbar.tsx"),
+        48,
+        null,
+      );
+      await deleteLinesFromFile(
+        path.join(componentsDir, "layout", "navbar.tsx"),
+        31,
+        38,
+      );
+      await deleteLinesFromFile(
+        path.join(componentsDir, "layout", "navbar.tsx"),
+        15,
+        null,
+      );
+      await deleteLinesFromFile(
+        path.join(componentsDir, "layout", "navbar.tsx"),
+        8,
+        null,
+      );
+      await deleteLinesFromFile(path.join(typesDir, "index.d.ts"), 42, 46);
 
       // remove folders & files
+      await deleteFolderRecursive(path.join(appDir, "(docs)"));
+      await deleteFolderRecursive(path.join(componentsDir, "docs"));
+      await deleteFolderRecursive(path.join(configDir, "docs.ts"));
+      await deleteFolderRecursive(path.join(contentDir, "docs"));
+      await deleteFolderRecursive(path.join(staticDir, "docs"));
 
       console.log("");
       console.log("Done.");

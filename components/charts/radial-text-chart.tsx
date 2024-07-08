@@ -99,7 +99,7 @@ export function RadialTextChart() {
           Trending up by 5.2% this month <TrendingUp className="size-4" />
         </div>
         <div className="leading-none text-muted-foreground">
-          Showing total visitors for the last 6 months
+          Total visitors in the last 6 months
         </div>
       </CardFooter>
     </Card>

@@ -1,4 +1,4 @@
-<a href="https://next-saas-stripe-starter.vercel.app">
+<a href="https://next-auth-roles-template.vercel.app">
   <img alt="Next Template" src="public/_static/og.jpg">
   <h1 align="center">Next Auth Roles Template</h1>
 </a>
@@ -138,3 +138,7 @@ pnpm run remove-content --docs
 This project is based on [Next SaaS Stripe Starter](https://next-saas-stripe-starter.vercel.app/).
 
 Created by [@miickasmt](https://twitter.com/miickasmt) in 2023, released under the [MIT license](https://github.com/shadcn/taxonomy/blob/main/LICENSE.md).
+
+## Credits
+
+Thanks to [Hosna Qasmei](https://twitter.com/hqasmei) for part of the dashboard sidebar code.

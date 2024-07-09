@@ -1,5 +1,4 @@
-import "server-only";
-
+// import "server-only";
 import { PrismaClient } from "@prisma/client";
 
 declare global {

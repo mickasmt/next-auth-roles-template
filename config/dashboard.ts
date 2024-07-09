@@ -42,6 +42,7 @@ export const sidebarLinks: SidebarDashboardType = [
         icon: "messages",
         label: "Support",
         authorizeOnly: UserRole.USER,
+        disabled: true
       },
     ],
   },

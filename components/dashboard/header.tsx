@@ -12,10 +12,12 @@ export function DashboardHeader({
   return (
     <div className="flex items-center justify-between px-2">
       <div className="grid gap-1">
-        <h1 className="font-heading text-lg font-semibold md:text-2xl">
+        <h1 className="font-heading text-xl font-semibold md:text-2xl">
           {heading}
         </h1>
-        {text && <p className="text-base text-muted-foreground">{text}</p>}
+        {text && (
+          <p className="text-sm text-muted-foreground md:text-base">{text}</p>
+        )}
       </div>
       {children}
     </div>

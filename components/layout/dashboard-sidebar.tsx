@@ -202,11 +202,12 @@ export function DashboardSidebar({ links }: DashboardSidebarProps) {
 
 export function MobileSheetSidebar({ links }: DashboardSidebarProps) {
   const path = usePathname();
+  const [open, setOpen] = useState(false);
   const { isTablet, isMobile } = useMediaQuery();
 
   if (isTablet || isMobile) {
     return (
-      <Sheet>
+      <Sheet open={open} onOpenChange={setOpen}>
         <SheetTrigger asChild>
           <Button
             variant="outline"
@@ -247,6 +248,9 @@ export function MobileSheetSidebar({ links }: DashboardSidebarProps) {
                       <Fragment key={`link-fragment-${item.label}`}>
                         <Link
                           key={`link-${item.label}`}
+                          onClick={() => {
+                            if (!item.disabled) setOpen(false);
+                          }}
                           href={item.disabled ? "#" : item.href}
                           className={cn(
                             "flex items-center gap-3 rounded-md p-2 text-sm font-medium hover:bg-muted",

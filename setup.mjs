@@ -153,7 +153,7 @@ const deleteFolderRecursive = async (folderPath) => {
       await manageLinesInFile('remove', path.join(configDir, "marketing.ts"), 9, 12);
 
       // types/index.d.ts
-      await manageLinesInFile('remove', path.join(typesDir, "index.d.ts"), 30, 50);
+      await manageLinesInFile('remove', path.join(typesDir, "index.d.ts"), 34, 44);
 
       // remove folders & files
       await deleteFolderRecursive(path.join(appDir, "(docs)"));
@@ -192,7 +192,7 @@ const deleteFolderRecursive = async (folderPath) => {
       await manageLinesInFile('remove', path.join(configDir, "marketing.ts"), 5, 12);
 
       // types/index.d.ts
-      await manageLinesInFile('remove', path.join(typesDir, "index.d.ts"), 30, 50);
+      await manageLinesInFile('remove', path.join(typesDir, "index.d.ts"), 34, 44);
 
       // next.config.js
       await manageLinesInFile('update', nextConfigPath, 30, null, "module.exports = nextConfig;");

@@ -3,7 +3,7 @@
 import { Fragment, useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { SidebarDashboardType } from "@/types";
+import { NavItem, SidebarNavItem } from "@/types";
 import { Menu, PanelLeftClose, PanelRightClose } from "lucide-react";
 
 import { siteConfig } from "@/config/site";
@@ -24,7 +24,7 @@ import { UpgradeCard } from "@/components/dashboard/upgrade-card";
 import { Icons } from "@/components/shared/icons";
 
 interface DashboardSidebarProps {
-  links: SidebarDashboardType;
+  links: SidebarNavItem[];
 }
 
 export function DashboardSidebar({ links }: DashboardSidebarProps) {
@@ -98,24 +98,24 @@ export function DashboardSidebar({ links }: DashboardSidebarProps) {
               <nav className="flex flex-1 flex-col gap-8 px-4 pt-4">
                 {links.map((section) => (
                   <section
-                    key={section.sectionName}
+                    key={section.title}
                     className="flex flex-col gap-0.5"
                   >
                     {isSidebarExpanded ? (
                       <p className="text-xs text-muted-foreground">
-                        {section.sectionName}
+                        {section.title}
                       </p>
                     ) : (
                       <div className="h-4" />
                     )}
-                    {section.links.map((item) => {
+                    {section.items.map((item) => {
                       const Icon = Icons[item.icon || "arrowRight"];
                       return (
                         item.href && (
-                          <Fragment key={`link-fragment-${item.label}`}>
+                          <Fragment key={`link-fragment-${item.title}`}>
                             {isSidebarExpanded ? (
                               <Link
-                                key={`link-${item.label}`}
+                                key={`link-${item.title}`}
                                 href={item.disabled ? "#" : item.href}
                                 className={cn(
                                   "flex items-center gap-3 rounded-md p-2 text-sm font-medium hover:bg-muted",
@@ -127,7 +127,7 @@ export function DashboardSidebar({ links }: DashboardSidebarProps) {
                                 )}
                               >
                                 <Icon className="size-5" />
-                                {item.label}
+                                {item.title}
                                 {item.badge && (
                                   <Badge className="ml-auto flex size-5 shrink-0 items-center justify-center rounded-full">
                                     {item.badge}
@@ -135,10 +135,10 @@ export function DashboardSidebar({ links }: DashboardSidebarProps) {
                                 )}
                               </Link>
                             ) : (
-                              <Tooltip key={`tooltip-${item.label}`}>
+                              <Tooltip key={`tooltip-${item.title}`}>
                                 <TooltipTrigger asChild>
                                   <Link
-                                    key={`link-tooltip-${item.label}`}
+                                    key={`link-tooltip-${item.title}`}
                                     href={item.disabled ? "#" : item.href}
                                     className={cn(
                                       "flex items-center gap-3 rounded-md py-2 text-sm font-medium hover:bg-muted",
@@ -155,7 +155,7 @@ export function DashboardSidebar({ links }: DashboardSidebarProps) {
                                   </Link>
                                 </TooltipTrigger>
                                 <TooltipContent side="right">
-                                  {item.label}
+                                  {item.title}
                                 </TooltipContent>
                               </Tooltip>
                             )}
@@ -214,20 +214,20 @@ export function MobileSheetSidebar({ links }: DashboardSidebarProps) {
 
                 {links.map((section) => (
                   <section
-                    key={section.sectionName}
+                    key={section.title}
                     className="flex flex-col gap-0.5"
                   >
                     <p className="text-xs text-muted-foreground">
-                      {section.sectionName}
+                      {section.title}
                     </p>
 
-                    {section.links.map((item) => {
+                    {section.items.map((item) => {
                       const Icon = Icons[item.icon || "arrowRight"];
                       return (
                         item.href && (
-                          <Fragment key={`link-fragment-${item.label}`}>
+                          <Fragment key={`link-fragment-${item.title}`}>
                             <Link
-                              key={`link-${item.label}`}
+                              key={`link-${item.title}`}
                               onClick={() => {
                                 if (!item.disabled) setOpen(false);
                               }}
@@ -242,7 +242,7 @@ export function MobileSheetSidebar({ links }: DashboardSidebarProps) {
                               )}
                             >
                               <Icon className="size-5" />
-                              {item.label}
+                              {item.title}
                               {item.badge && (
                                 <Badge className="ml-auto flex size-5 shrink-0 items-center justify-center rounded-full">
                                   {item.badge}

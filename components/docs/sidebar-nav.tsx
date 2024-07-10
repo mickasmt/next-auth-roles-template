@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import { SidebarNavItem } from "types";
+import { NavItem } from "types";
 import { docsConfig } from "@/config/docs";
 import { cn } from "@/lib/utils";
 
@@ -18,7 +18,7 @@ export function DocsSidebarNav({ setOpen }: DocsSidebarNavProps) {
   return items.length > 0 ? (
     <div className="w-full">
       {items.map((item) => (
-        <div key={item.href + item.title} className={cn("pb-8")}>
+        <div key={item.title} className={cn("pb-8")}>
           <h4 className="mb-1 rounded-md py-1 text-base font-medium md:px-2 md:text-sm">
             {item.title}
           </h4>
@@ -36,7 +36,7 @@ export function DocsSidebarNav({ setOpen }: DocsSidebarNavProps) {
 }
 
 interface DocsSidebarNavItemsProps {
-  items: SidebarNavItem[];
+  items: NavItem[];
   pathname: string | null;
   setOpen?: (boolean) => void;
 }

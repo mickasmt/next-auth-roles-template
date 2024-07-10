@@ -18,7 +18,11 @@ export type SiteConfig = {
 export type NavItem = {
   title: string;
   href: string;
+  badge?: number;
   disabled?: boolean;
+  external?: boolean;
+  authorizeOnly?: UserRole;
+  icon?: keyof typeof Icons;
 };
 
 export type MainNavItem = NavItem;
@@ -29,38 +33,12 @@ export type MarketingConfig = {
 
 export type SidebarNavItem = {
   title: string;
-  disabled?: boolean;
-  external?: boolean;
+  items: NavItem[];
+  authorizeOnly?: UserRole;
   icon?: keyof typeof Icons;
-} & (
-  | {
-      href: string;
-      items?: never;
-    }
-  | {
-      href?: string;
-      items: NavLink[];
-    }
-);
+};
 
 export type DocsConfig = {
   mainNav: MainNavItem[];
   sidebarNav: SidebarNavItem[];
 };
-
-// dashboard
-export type SidebarLinkType = {
-  href: string;
-  label: string;
-  icon: keyof typeof Icons;
-  badge?: number;
-  disabled?: boolean;
-  authorizeOnly?: UserRole;
-};
-
-export type SidebarSectionType = {
-  sectionName: string;
-  links: SidebarLinkType[];
-};
-
-export type SidebarDashboardType = SidebarSectionType[];

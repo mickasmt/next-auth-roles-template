@@ -1,48 +1,47 @@
 import { UserRole } from "@prisma/client";
 
-import { SidebarDashboardType } from "types";
+import { SidebarNavItem } from "types";
 
-export const sidebarLinks: SidebarDashboardType = [
+export const sidebarLinks: SidebarNavItem[] = [
   {
-    sectionName: "MENU",
-    links: [
+    title: "MENU",
+    items: [
       {
         href: "/admin",
         icon: "laptop",
-        label: "Admin Panel",
+        title: "Admin Panel",
         authorizeOnly: UserRole.ADMIN,
       },
-      { href: "/dashboard", icon: "dashboard", label: "Dashboard" },
-      { href: "/dashboard/charts", icon: "lineChart", label: "Charts" },
+      { href: "/dashboard", icon: "dashboard", title: "Dashboard" },
+      { href: "/dashboard/charts", icon: "lineChart", title: "Charts" },
       {
         href: "/admin/orders",
         icon: "package",
-        label: "Orders",
+        title: "Orders",
         badge: 2,
         authorizeOnly: UserRole.ADMIN,
       },
       {
-        // href: "#/dashboard/posts",
-        href: "#",
+        href: "#/dashboard/posts",
         icon: "post",
-        label: "User Posts",
+        title: "User Posts",
         authorizeOnly: UserRole.USER,
-        disabled: true
+        disabled: true,
       },
     ],
   },
   {
-    sectionName: "OPTIONS",
-    links: [
-      { href: "/dashboard/settings", icon: "settings", label: "Settings" },
-      { href: "/", icon: "home", label: "Homepage" },
-      { href: "/docs", icon: "bookOpen", label: "Documentation" },
+    title: "OPTIONS",
+    items: [
+      { href: "/dashboard/settings", icon: "settings", title: "Settings" },
+      { href: "/", icon: "home", title: "Homepage" },
+      { href: "/docs", icon: "bookOpen", title: "Documentation" },
       {
         href: "#",
         icon: "messages",
-        label: "Support",
+        title: "Support",
         authorizeOnly: UserRole.USER,
-        disabled: true
+        disabled: true,
       },
     ],
   },

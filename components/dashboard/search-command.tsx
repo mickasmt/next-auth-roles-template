@@ -2,7 +2,7 @@
 
 import React from "react";
 import { useRouter } from "next/navigation";
-import { SidebarDashboardType } from "@/types";
+import { SidebarNavItem } from "@/types";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -16,7 +16,7 @@ import {
 } from "@/components/ui/command";
 import { Icons } from "@/components/shared/icons";
 
-export function SearchCommand({ links }: { links: SidebarDashboardType }) {
+export function SearchCommand({ links }: { links: SidebarNavItem[] }) {
   const [open, setOpen] = React.useState(false);
   const router = useRouter();
 
@@ -57,20 +57,20 @@ export function SearchCommand({ links }: { links: SidebarDashboardType }) {
           <CommandEmpty>No results found.</CommandEmpty>
           {links.map((section) => (
             <CommandGroup
-              key={section.sectionName}
-              heading={section.sectionName}
+              key={section.title}
+              heading={section.title}
             >
-              {section.links.map((item) => {
+              {section.items.map((item) => {
                 const Icon = Icons[item.icon || "arrowRight"];
                 return (
                   <CommandItem
-                    key={item.label}
+                    key={item.title}
                     onSelect={() => {
                       runCommand(() => router.push(item.href as string));
                     }}
                   >
                     <Icon className="mr-2 size-5" />
-                    {item.label}
+                    {item.title}
                   </CommandItem>
                 );
               })}

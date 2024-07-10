@@ -22,7 +22,7 @@ export default async function Dashboard({ children }: ProtectedLayoutProps) {
 
   const filteredLinks = sidebarLinks.map((section) => ({
     ...section,
-    links: section.links.filter(
+    items: section.items.filter(
       ({ authorizeOnly }) => !authorizeOnly || authorizeOnly === user.role,
     ),
   }));

@@ -128,8 +128,8 @@ const deleteFolderRecursive = async (folderPath) => {
       await manageLinesInFile('remove', contentlayerPath, 23, 42);
 
       // hero-landing.tsx
-      await manageLinesInFile('update', path.join(componentsDir, "sections", "hero-landing.tsx"), 43, null, 'href="/login"');
-      await manageLinesInFile('update', path.join(componentsDir, "sections", "hero-landing.tsx"), 50, null, "<span>Go to Login Page</span>");
+      await manageLinesInFile('update', path.join(componentsDir, "sections", "hero-landing.tsx"), 37, null, 'href="/login"');
+      await manageLinesInFile('update', path.join(componentsDir, "sections", "hero-landing.tsx"), 44, null, "<span>Go to Login Page</span>");
 
       // mobile-nav.tsx
       await manageLinesInFile('remove', path.join(componentsDir, "layout", "mobile-nav.tsx"), 124, 129);
@@ -147,7 +147,7 @@ const deleteFolderRecursive = async (folderPath) => {
       await manageLinesInFile('remove', path.join(componentsDir, "layout", "navbar.tsx"), 8, null);
 
       // dashboard.ts
-      await manageLinesInFile('remove', path.join(configDir, "dashboard.ts"), 39, null);
+      await manageLinesInFile('remove', path.join(configDir, "dashboard.ts"), 38, null);
 
       // marketing.ts
       await manageLinesInFile('remove', path.join(configDir, "marketing.ts"), 9, 12);
@@ -169,8 +169,8 @@ const deleteFolderRecursive = async (folderPath) => {
       console.log("Deleting all content\n");
 
       // hero-landing.tsx
-      await manageLinesInFile('update', path.join(componentsDir, "sections", "hero-landing.tsx"), 43, null, 'href="/login"');
-      await manageLinesInFile('update', path.join(componentsDir, "sections", "hero-landing.tsx"), 50, null, "<span>Go to Login Page</span>");
+      await manageLinesInFile('update', path.join(componentsDir, "sections", "hero-landing.tsx"), 37, null, 'href="/login"');
+      await manageLinesInFile('update', path.join(componentsDir, "sections", "hero-landing.tsx"), 44, null, "<span>Go to Login Page</span>");
 
       // mobile-nav.tsx
       await manageLinesInFile('remove', path.join(componentsDir, "layout", "mobile-nav.tsx"), 124, 129);
@@ -188,7 +188,7 @@ const deleteFolderRecursive = async (folderPath) => {
       await manageLinesInFile('remove', path.join(componentsDir, "layout", "navbar.tsx"), 8, null);
 
       // config files
-      await manageLinesInFile('remove', path.join(configDir, "dashboard.ts"), 39, null);
+      await manageLinesInFile('remove', path.join(configDir, "dashboard.ts"), 38, null);
       await manageLinesInFile('remove', path.join(configDir, "marketing.ts"), 5, 12);
 
       // types/index.d.ts

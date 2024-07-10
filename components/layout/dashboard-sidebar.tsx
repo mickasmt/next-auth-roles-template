@@ -11,13 +11,7 @@ import { cn } from "@/lib/utils";
 import { useMediaQuery } from "@/hooks/use-media-query";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import {
   Tooltip,
@@ -25,10 +19,9 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import ProjectSwitcher from "@/components/dashboard/project-switcher";
+import { UpgradeCard } from "@/components/dashboard/upgrade-card";
 import { Icons } from "@/components/shared/icons";
-
-import ProjectSwitcher from "../dashboard/project-switcher";
-import { ScrollArea } from "../ui/scroll-area";
 
 interface DashboardSidebarProps {
   links: SidebarDashboardType;
@@ -175,22 +168,7 @@ export function DashboardSidebar({ links }: DashboardSidebarProps) {
               </nav>
 
               <div className="mt-auto xl:p-4">
-                {isSidebarExpanded && !isTablet ? (
-                  <Card className="max-xl:rounded-none max-xl:border-none max-xl:pb-6">
-                    <CardHeader className="max-xl:p-4">
-                      <CardTitle>Upgrade to Pro</CardTitle>
-                      <CardDescription>
-                        Unlock all features and get unlimited access to our
-                        support team.
-                      </CardDescription>
-                    </CardHeader>
-                    <CardContent className="max-xl:p-4">
-                      <Button size="sm" className="w-full">
-                        Upgrade
-                      </Button>
-                    </CardContent>
-                  </Card>
-                ) : null}
+                {isSidebarExpanded ? <UpgradeCard /> : null}
               </div>
             </div>
           </aside>
@@ -203,9 +181,9 @@ export function DashboardSidebar({ links }: DashboardSidebarProps) {
 export function MobileSheetSidebar({ links }: DashboardSidebarProps) {
   const path = usePathname();
   const [open, setOpen] = useState(false);
-  const { isTablet, isMobile } = useMediaQuery();
+  const { isSm, isMobile } = useMediaQuery();
 
-  if (isTablet || isMobile) {
+  if (isSm || isMobile) {
     return (
       <Sheet open={open} onOpenChange={setOpen}>
         <SheetTrigger asChild>
@@ -218,85 +196,78 @@ export function MobileSheetSidebar({ links }: DashboardSidebarProps) {
             <span className="sr-only">Toggle navigation menu</span>
           </Button>
         </SheetTrigger>
-        <SheetContent side="left" className="flex flex-col">
-          <nav className="flex flex-1 flex-col gap-8 text-lg font-medium">
-            <Link
-              href="#"
-              className="flex items-center gap-2 text-lg font-semibold"
-            >
-              <Icons.logo className="size-6" />
-              <span className="font-satoshi text-lg font-bold">
-                {siteConfig.name}
-              </span>
-            </Link>
+        <SheetContent side="left" className="flex flex-col p-0">
+          <ScrollArea className="h-full overflow-y-auto">
+            <div className="flex h-screen flex-col">
+              <nav className="flex flex-1 flex-col gap-y-8 p-6 text-lg font-medium">
+                <Link
+                  href="#"
+                  className="flex items-center gap-2 text-lg font-semibold"
+                >
+                  <Icons.logo className="size-6" />
+                  <span className="font-satoshi text-lg font-bold">
+                    {siteConfig.name}
+                  </span>
+                </Link>
 
-            <ProjectSwitcher large />
+                <ProjectSwitcher large />
 
-            {links.map((section) => (
-              <section
-                key={section.sectionName}
-                className="flex flex-col gap-0.5"
-              >
-                <p className="text-xs text-muted-foreground">
-                  {section.sectionName}
-                </p>
+                {links.map((section) => (
+                  <section
+                    key={section.sectionName}
+                    className="flex flex-col gap-0.5"
+                  >
+                    <p className="text-xs text-muted-foreground">
+                      {section.sectionName}
+                    </p>
 
-                {section.links.map((item) => {
-                  const Icon = Icons[item.icon || "arrowRight"];
-                  return (
-                    item.href && (
-                      <Fragment key={`link-fragment-${item.label}`}>
-                        <Link
-                          key={`link-${item.label}`}
-                          onClick={() => {
-                            if (!item.disabled) setOpen(false);
-                          }}
-                          href={item.disabled ? "#" : item.href}
-                          className={cn(
-                            "flex items-center gap-3 rounded-md p-2 text-sm font-medium hover:bg-muted",
-                            path === item.href
-                              ? "bg-muted"
-                              : "text-muted-foreground hover:text-accent-foreground",
-                            item.disabled &&
-                              "cursor-not-allowed opacity-80 hover:bg-transparent hover:text-muted-foreground",
-                          )}
-                        >
-                          <Icon className="size-5" />
-                          {item.label}
-                          {item.badge && (
-                            <Badge className="ml-auto flex size-5 shrink-0 items-center justify-center rounded-full">
-                              {item.badge}
-                            </Badge>
-                          )}
-                        </Link>
-                      </Fragment>
-                    )
-                  );
-                })}
-              </section>
-            ))}
-          </nav>
+                    {section.links.map((item) => {
+                      const Icon = Icons[item.icon || "arrowRight"];
+                      return (
+                        item.href && (
+                          <Fragment key={`link-fragment-${item.label}`}>
+                            <Link
+                              key={`link-${item.label}`}
+                              onClick={() => {
+                                if (!item.disabled) setOpen(false);
+                              }}
+                              href={item.disabled ? "#" : item.href}
+                              className={cn(
+                                "flex items-center gap-3 rounded-md p-2 text-sm font-medium hover:bg-muted",
+                                path === item.href
+                                  ? "bg-muted"
+                                  : "text-muted-foreground hover:text-accent-foreground",
+                                item.disabled &&
+                                  "cursor-not-allowed opacity-80 hover:bg-transparent hover:text-muted-foreground",
+                              )}
+                            >
+                              <Icon className="size-5" />
+                              {item.label}
+                              {item.badge && (
+                                <Badge className="ml-auto flex size-5 shrink-0 items-center justify-center rounded-full">
+                                  {item.badge}
+                                </Badge>
+                              )}
+                            </Link>
+                          </Fragment>
+                        )
+                      );
+                    })}
+                  </section>
+                ))}
 
-          <div className="mt-auto">
-            <Card>
-              <CardHeader>
-                <CardTitle>Upgrade to Pro</CardTitle>
-                <CardDescription>
-                  Unlock all features and get unlimited access to our support
-                  team.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <Button size="sm" className="w-full">
-                  Upgrade
-                </Button>
-              </CardContent>
-            </Card>
-          </div>
+                <div className="mt-auto">
+                  <UpgradeCard />
+                </div>
+              </nav>
+            </div>
+          </ScrollArea>
         </SheetContent>
       </Sheet>
     );
   }
 
-  return;
+  return (
+    <div className="flex size-9 animate-pulse rounded-lg bg-muted md:hidden" />
+  );
 }

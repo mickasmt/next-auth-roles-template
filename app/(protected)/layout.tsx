@@ -28,12 +28,12 @@ export default async function Dashboard({ children }: ProtectedLayoutProps) {
   }));
 
   return (
-    <MaxWidthWrapper className="max-w-[1650px] px-0">
-      <div className="relative flex min-h-screen w-full">
-        <DashboardSidebar links={filteredLinks} />
+    <div className="relative flex min-h-screen w-full">
+      <DashboardSidebar links={filteredLinks} />
 
-        <div className="flex flex-1 flex-col">
-          <header className="sticky top-0 z-50 flex h-14 items-center gap-3 bg-background px-4 lg:h-[60px] xl:px-10">
+      <div className="flex flex-1 flex-col">
+        <header className="sticky top-0 z-50 flex h-14 bg-background px-4 lg:h-[60px] xl:px-10">
+          <MaxWidthWrapper className="flex items-center gap-x-3 px-0">
             <MobileSheetSidebar links={filteredLinks} />
 
             <div className="w-full flex-1">
@@ -43,13 +43,15 @@ export default async function Dashboard({ children }: ProtectedLayoutProps) {
             {/* <Notifications /> */}
             <ModeToggle />
             <UserAccountNav />
-          </header>
+          </MaxWidthWrapper>
+        </header>
 
-          <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 xl:px-10">
+        <main className="p-4 xl:px-10">
+          <MaxWidthWrapper className="flex flex-1 flex-col gap-4 px-0 lg:gap-6">
             {children}
-          </main>
-        </div>
+          </MaxWidthWrapper>
+        </main>
       </div>
-    </MaxWidthWrapper>
+    </div>
   );
 }

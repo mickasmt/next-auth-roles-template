@@ -57,6 +57,11 @@ export const docsConfig: DocsConfig = {
           icon: "page",
         },
         {
+          title: "Layout Options",
+          href: "/docs/configuration/layouts",
+          icon: "page",
+        },
+        {
           title: "Markdown files",
           href: "/docs/configuration/markdown-files",
           icon: "page",

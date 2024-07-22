@@ -1,10 +1,10 @@
 import * as React from "react";
-import NextImage, { ImageProps } from "next/image";
 import Link from "next/link";
 import { useMDXComponent } from "next-contentlayer2/hooks";
 
 import { cn } from "@/lib/utils";
 import { MdxCard } from "@/components/content/mdx-card";
+import BlurImage from "@/components/shared/blur-image";
 import { Callout } from "@/components/shared/callout";
 import { CopyButton } from "@/components/shared/copy-button";
 
@@ -164,7 +164,6 @@ const components = {
       {...props}
     />
   ),
-  Image: (props: ImageProps) => <NextImage {...props} />,
   Callout,
   Card: MdxCard,
   Step: ({ className, ...props }: React.ComponentProps<"h3">) => (
@@ -201,14 +200,35 @@ const components = {
 
 interface MdxProps {
   code: string;
+  images?: { alt: string; src: string; blurDataURL: string }[];
 }
 
-export function Mdx({ code }: MdxProps) {
+export function Mdx({ code, images }: MdxProps) {
   const Component = useMDXComponent(code);
+
+  const MDXImage = (props: any) => {
+    if (!images) return null;
+    const blurDataURL = images.find(
+      (image) => image.src === props.src,
+    )?.blurDataURL;
+
+    return (
+      <BlurImage
+        {...props}
+        blurDataURL={blurDataURL}
+        className="mt-5 w-full overflow-hidden rounded-lg border"
+      />
+    );
+  };
 
   return (
     <div className="mdx">
-      <Component components={components} />
+      <Component
+        components={{
+          ...components,
+          Image: MDXImage,
+        }}
+      />
     </div>
   );
 }

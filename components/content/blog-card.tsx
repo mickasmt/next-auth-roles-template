@@ -28,20 +28,22 @@ export function BlogCard({
       )}
     >
       {data.image && (
-        <BlurImage
-          alt={data.title}
-          blurDataURL={data.blurDataURL ?? placeholderBlurhash}
-          className={cn(
-            "w-full rounded-xl border object-cover object-center",
-            horizontale ? "lg:h-72" : null,
-          )}
-          width={800}
-          height={400}
-          priority={priority}
-          placeholder="blur"
-          src={data.image}
-          sizes="(max-width: 768px) 750px, 600px"
-        />
+        <div className="w-full overflow-hidden rounded-xl border">
+          <BlurImage
+            alt={data.title}
+            blurDataURL={data.blurDataURL ?? placeholderBlurhash}
+            className={cn(
+              "size-full object-cover object-center",
+              horizontale ? "lg:h-72" : null,
+            )}
+            width={800}
+            height={400}
+            priority={priority}
+            placeholder="blur"
+            src={data.image}
+            sizes="(max-width: 768px) 750px, 600px"
+          />
+        </div>
       )}
       <div
         className={cn(
